@@ -1,0 +1,15 @@
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\bin\Debug\T_RexRunning.exe.config
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\bin\Debug\T_RexRunning.exe
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\bin\Debug\T_RexRunning.pdb
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.csproj.AssemblyReference.cache
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\MainWindow.g.cs
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\App.g.cs
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning_MarkupCompile.cache
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning_MarkupCompile.lref
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\MainWindow.baml
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.g.resources
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.Properties.Resources.resources
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.csproj.GenerateResource.cache
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.csproj.CoreCompileInputs.cache
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.exe
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.pdb
