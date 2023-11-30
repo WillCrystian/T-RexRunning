@@ -22,9 +22,10 @@ namespace T_RexRunning
     public partial class MainWindow : Window
     {
 
-        bool gameOver = false;
-        bool jumping = false;
-        int gravity = 8;
+        bool gameOver;
+        bool jumping;
+        int force;
+        int gravity = 6;
         Rect rexHitBox;
         Rect groudHitBox;
 
@@ -44,31 +45,64 @@ namespace T_RexRunning
 
             rexHitBox = new Rect(Canvas.GetLeft(Rex),Canvas.GetTop(Rex), Rex.Width, Rex.Height);
             groudHitBox = new Rect(Canvas.GetLeft(Ground), Canvas.GetTop(Ground)-5, Ground.Width, Ground.Height);
-            if (rexHitBox.IntersectsWith(groudHitBox))
+
+            if (rexHitBox.IntersectsWith(groudHitBox) && jumping == false)
             {
                 gravity = 0;
+                force = 6;
                 jumping = false;
             }
+
+            if (jumping == true && force < 0)
+            {
+                jumping = false;
+            }           
+            
+            if (jumping == true)
+            {
+                gravity = -6;
+            }
+            else if(jumping == false && !rexHitBox.IntersectsWith(groudHitBox))
+            {
+                gravity = 6;
+            }
+
+            
         }
 
         private void KeyisDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Space && jumping == false)
+            force -= 1;
+            if(e.Key == Key.Space && jumping == false && force >= 0)
+            {                
+                jumping = true;           
+            }
+            if (e.Key == Key.R && gameOver == true)
             {
-                gravity = -8;
+                StartGame();
             }
         }
 
+       
+
         private void KeyisUp(object sender, KeyEventArgs e)
-        {
+        {           
             if (e.Key == Key.Space)
             {
-                gravity = 8;
-            }
+                jumping = false;
+            }            
         }
+
 
         private void StartGame()
         {
+            gameOver = false;
+            jumping = false;
+            force = 6;
+
+            Canvas.SetTop(Rex, 268);
+
+            MyCanvas.Focus();
             gameTimer.Start();
         }
 

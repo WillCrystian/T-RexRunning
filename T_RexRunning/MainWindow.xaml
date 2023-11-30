@@ -6,11 +6,13 @@
         xmlns:local="clr-namespace:T_RexRunning"
         mc:Ignorable="d"
         Title="T-Rex Running" Height="450" Width="800">
-    <Canvas Name="MyCanvas" Background="#FFD2D2D2" KeyDown="KeyisDown" KeyUp="KeyisUp">
+    <Canvas Name="MyCanvas" Background="#FFD2D2D2" KeyDown="KeyisDown" KeyUp="KeyisUp" Focusable="True">
         <Image Name ="Rex" Height="60" Width="60" Canvas.Left="76" Canvas.Top="268" Source="image/running.gif" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Image Height="60" Width="40" Canvas.Left="291" Canvas.Top="300" Source="image/obstacle1.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Height="60" Width="80" Canvas.Left="517" Canvas.Top="300" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle Name="Ground" Height="100" Canvas.Left="-178" Stroke="Black" Canvas.Top="360" Width="1062" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Name="lbForce" Content="lbForce" Canvas.Left="580" Canvas.Top="57"/>
+        <Label Name="lbApertado" Content="Label" Canvas.Left="580" Canvas.Top="111"/>
 
     </Canvas>
 </Window>
