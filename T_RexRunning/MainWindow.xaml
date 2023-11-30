@@ -7,12 +7,17 @@
         mc:Ignorable="d"
         Title="T-Rex Running" Height="450" Width="800">
     <Canvas Name="MyCanvas" Background="#FFD2D2D2" KeyDown="KeyisDown" KeyUp="KeyisUp" Focusable="True">
-        <Image Name ="Rex" Height="60" Width="60" Canvas.Left="76" Canvas.Top="268" Source="image/running.gif" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Image Height="60" Width="40" Canvas.Left="291" Canvas.Top="300" Source="image/obstacle1.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Image Height="60" Width="80" Canvas.Left="517" Canvas.Top="300" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Rectangle Name="Ground" Height="100" Canvas.Left="-178" Stroke="Black" Canvas.Top="360" Width="1062" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label Name="lbForce" Content="lbForce" Canvas.Left="580" Canvas.Top="57"/>
-        <Label Name="lbApertado" Content="Label" Canvas.Left="580" Canvas.Top="111"/>
-
+        <Image Name ="Rex" Height="60" Width="60" Canvas.Left="76" Canvas.Top="268" Source="image/running.gif" Stretch="fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Grid Name="gdObstacle1" Canvas.Left="200" Canvas.Top="300">
+            <Image Height="60" Width="40" Source="image/obstacle1.gif" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Name="gdObstacle2" Canvas.Left="400" Canvas.Top="300">
+            <Image Height="60" Width="80" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </Grid>
+        <Grid Name="gdObstacle4" Canvas.Left="600" Canvas.Top="310">            
+            <Image Height="50" Width="70" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="85,0,0,0" Grid.ColumnSpan="2"/>
+            <Image Height="50" Width="70" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        </Grid>
+        <Rectangle Name="Ground" Height="100" Canvas.Left="-114" Stroke="Black" Canvas.Top="360" Width="998" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>
 </Window>
