@@ -13,3 +13,6 @@ C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexR
 C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.csproj.CoreCompileInputs.cache
 C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.exe
 C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.pdb
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\bin\Debug\WpfAnimatedGif.dll
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\bin\Debug\WpfAnimatedGif.xml
+C:\Users\william.aniceto\source\repos\T_RexRunning\T_RexRunning\obj\Debug\T_RexRunning.csproj.CopyComplete

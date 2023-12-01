@@ -1,22 +1,26 @@
 ﻿<Window x:Class="T_RexRunning.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:T_RexRunning"
-        mc:Ignorable="d"
+        mc:Ignorable="d"        
         Title="T-Rex Running" Height="450" Width="800">
     <Canvas Name="MyCanvas" Background="#FFD2D2D2" KeyDown="KeyisDown" KeyUp="KeyisUp" Focusable="True">
-        <Image Name ="Rex" Height="60" Width="60" Canvas.Left="76" Canvas.Top="268" Source="image/running.gif" Stretch="fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Image Name ="Rex" Height="60" Width="60" Canvas.Left="76" Canvas.Top="268" gif:ImageBehavior.AnimatedSource="image/running.gif" Stretch="fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <Grid Name="gdObstacle1" Canvas.Left="200" Canvas.Top="300">
             <Image Height="60" Width="40" Source="image/obstacle1.gif" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
         <Grid Name="gdObstacle2" Canvas.Left="400" Canvas.Top="300">
-            <Image Height="60" Width="80" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Image Height="60" Width="50" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
         </Grid>
-        <Grid Name="gdObstacle4" Canvas.Left="600" Canvas.Top="310">            
-            <Image Height="50" Width="70" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="85,0,0,0" Grid.ColumnSpan="2"/>
-            <Image Height="50" Width="70" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Grid Name="gdObstacle3" Canvas.Left="600" Canvas.Top="310">
+            <Image Height="50" Width="50" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="75,0,0,0" Grid.ColumnSpan="2"/>
+            <Image Height="50" Width="50" Source="image/obstacle2.gif" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        </Grid>
+        <Grid Name="gdObstacle4" Canvas.Left="800" Canvas.Top="260">
+            <Image Height="50" Width="70" gif:ImageBehavior.AnimatedSource="image/passaro.gif" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
         <Rectangle Name="Ground" Height="100" Canvas.Left="-114" Stroke="Black" Canvas.Top="360" Width="998" Fill="Black" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Canvas>

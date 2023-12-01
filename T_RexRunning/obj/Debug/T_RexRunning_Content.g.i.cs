@@ -8,9 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/dead.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/obstacle-1.gif")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/obstacle-2.gif")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/running.gif")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/passaro.gif")]
 
 

@@ -21,7 +21,7 @@ namespace T_RexRunning
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        
         bool gameOver;
 
         bool jumping;
@@ -31,9 +31,11 @@ namespace T_RexRunning
         int speedObstacle = 8;
         Rect rexHitBox;
         Rect groudHitBox;
-        List<Grid> listGrid = new List<Grid>();
-        DispatcherTimer gameTimer = new DispatcherTimer();
 
+        List<Grid> listGrid = new List<Grid>();
+
+        DispatcherTimer gameTimer = new DispatcherTimer();
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -45,7 +47,7 @@ namespace T_RexRunning
         private void MainEventTimer(object sender, EventArgs e)
         {
             Canvas.SetTop(Rex, Canvas.GetTop(Rex) + gravity);
-            //Canvas.SetLeft(Obstacle1, Canvas.GetLeft(Obstacle1) - speedObstacle);
+            
             rexHitBox = new Rect(Canvas.GetLeft(Rex),Canvas.GetTop(Rex), Rex.Width, Rex.Height);
             groudHitBox = new Rect(Canvas.GetLeft(Ground), Canvas.GetTop(Ground)-5, Ground.Width, Ground.Height);
 
@@ -173,6 +175,5 @@ namespace T_RexRunning
             }
             
         }
-        
     }
 }
