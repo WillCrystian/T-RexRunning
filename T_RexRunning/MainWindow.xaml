@@ -8,7 +8,8 @@
         mc:Ignorable="d"        
         Title="T-Rex Running" Height="450" Width="800">
     <Canvas Name="MyCanvas" Background="#FFD2D2D2" KeyDown="KeyisDown" KeyUp="KeyisUp" Focusable="True">
-        <Image Name ="Rex" Height="60" Width="60" Canvas.Left="76" Canvas.Top="268" gif:ImageBehavior.AnimatedSource="image/running.gif" Stretch="fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Image Name ="Rex" Height="70" Width="60" Canvas.Left="75" Canvas.Top="290" gif:ImageBehavior.AnimatedSource="image/running.gif" Stretch="fill" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Image Name ="RexAbaixado" Height="45" Width="80" Canvas.Left="-117" Canvas.Top="317" gif:ImageBehavior.AnimatedSource="image/lowered.gif" Stretch="fill" HorizontalAlignment="Center" VerticalAlignment="Top" />
         <Grid Name="gdObstacle1" Canvas.Left="200" Canvas.Top="300">
             <Image Height="60" Width="40" Source="image/obstacle1.gif" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>

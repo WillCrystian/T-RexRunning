@@ -107,5 +107,8 @@
   <ItemGroup>
     <Resource Include="image\passaro.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\lowered.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

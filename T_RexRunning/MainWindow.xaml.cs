@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WpfAnimatedGif;
 
 namespace T_RexRunning
 {
@@ -26,7 +27,9 @@ namespace T_RexRunning
 
         bool jumping;
         int force;
-        int gravity = 6;
+        int gravity = 10;
+        bool isGround;
+        bool isLowered;
 
         int speedObstacle = 8;
         Rect rexHitBox;
@@ -46,17 +49,18 @@ namespace T_RexRunning
 
         private void MainEventTimer(object sender, EventArgs e)
         {
-            Canvas.SetTop(Rex, Canvas.GetTop(Rex) + gravity);
-            
-            rexHitBox = new Rect(Canvas.GetLeft(Rex),Canvas.GetTop(Rex), Rex.Width, Rex.Height);
+            Canvas.SetTop(Rex, Canvas.GetTop(Rex) + gravity);  
+           
+            HitBoxSelect();
             groudHitBox = new Rect(Canvas.GetLeft(Ground), Canvas.GetTop(Ground)-5, Ground.Width, Ground.Height);
-
+            
             //verifica se está tocando no chão e não está pulando
             if (rexHitBox.IntersectsWith(groudHitBox) && jumping == false)
             {
                 gravity = 0;
-                force = 6;
+                force = 10;
                 jumping = false;
+                isGround = true;
             }
 
             // se estiver pulando e a força estiver acabado
@@ -68,12 +72,14 @@ namespace T_RexRunning
             // verifica se está pulando
             if (jumping == true)
             {
-                gravity = -8;
+                force -= 1;
+                gravity = -10;
+                isGround = false;
             }
             //verifica se não está pulando e se não está tocando o chão
             else if(jumping == false && !rexHitBox.IntersectsWith(groudHitBox))
             {
-                gravity = 4;
+                gravity = 8;
             }     
             
             foreach(var x in listGrid)
@@ -95,8 +101,7 @@ namespace T_RexRunning
         }
 
         private void KeyisDown(object sender, KeyEventArgs e)
-        {
-            force -= 1;
+        {            
             if(e.Key == Key.Space && jumping == false && force >= 0)
             {                
                 jumping = true;           
@@ -106,6 +111,11 @@ namespace T_RexRunning
             {
                 StartGame();
             }
+
+            if(e.Key == Key.Down && isGround == true)
+            {
+                SwapDinoToLowered();
+            }
         }       
 
         private void KeyisUp(object sender, KeyEventArgs e)
@@ -113,18 +123,23 @@ namespace T_RexRunning
             if (e.Key == Key.Space)
             {
                 jumping = false;
-            }            
+            }
+            if (e.Key == Key.Down)
+            {
+                SwapDinoToUppered();
+            }
         }
 
         private void StartGame()
         {
             gameOver = false;
             jumping = false;
+            isGround = true;
+            isLowered = false;
             force = 6;
 
             Canvas.SetTop(Rex, 268);
-
-
+            rexHitBox = new Rect(Canvas.GetLeft(Rex), Canvas.GetTop(Rex), Rex.Width, Rex.Height - 3);
             MyCanvas.Focus();
 
             //Adicionando todos os gridsna lista
@@ -146,7 +161,6 @@ namespace T_RexRunning
             //Spawn de obstáculo para começar a lógica
             listGrid[0] .Visibility = Visibility.Visible;
             Canvas.SetLeft(listGrid[0], -100);
-
 
             gameTimer.Start();
         }
@@ -172,8 +186,32 @@ namespace T_RexRunning
                 int index = rnd.Next(0, listGrid.Count);
                 
                 listGrid[index].Visibility = Visibility.Visible;
+            }            
+        }
+
+        private void SwapDinoToLowered()
+        {
+            isLowered = true;
+            Canvas.SetLeft(Rex, -300);
+            Canvas.SetLeft(RexAbaixado, 75);            
+        }
+        private void SwapDinoToUppered()
+        {
+            isLowered = false;
+            Canvas.SetLeft(RexAbaixado, -300);
+            Canvas.SetLeft(Rex, 75);            
+        }
+
+        private void HitBoxSelect()
+        {
+            if (isLowered)
+            {
+                rexHitBox = new Rect(Canvas.GetLeft(RexAbaixado), Canvas.GetTop(RexAbaixado), RexAbaixado.Width, RexAbaixado.Height - 3);
             }
-            
+            else
+            {
+                rexHitBox = new Rect(Canvas.GetLeft(Rex), Canvas.GetTop(Rex), Rex.Width, Rex.Height - 3);
+            }
         }
     }
 }
