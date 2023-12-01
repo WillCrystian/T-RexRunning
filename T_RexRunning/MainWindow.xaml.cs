@@ -31,11 +31,12 @@ namespace T_RexRunning
         bool isGround;
         bool isLowered;
 
-        int speedObstacle = 8;
+        int speedObstacle;
         Rect rexHitBox;
         Rect groudHitBox;
+        Rect obstacleHitBox;
 
-        List<Grid> listGrid = new List<Grid>();
+        List<Image> listImage = new List<Image>();
 
         DispatcherTimer gameTimer = new DispatcherTimer();
        
@@ -58,7 +59,7 @@ namespace T_RexRunning
             if (rexHitBox.IntersectsWith(groudHitBox) && jumping == false)
             {
                 gravity = 0;
-                force = 10;
+                force = 15;
                 jumping = false;
                 isGround = true;
             }
@@ -82,21 +83,29 @@ namespace T_RexRunning
                 gravity = 8;
             }     
             
-            foreach(var x in listGrid)
+            foreach(var x in listImage)
             {
                 //se estiver visivel movimenta-se
                 if(x.Visibility == Visibility.Visible)
                 {
                     Canvas.SetLeft(x, Canvas.GetLeft(x) - speedObstacle);
+
+                    obstacleHitBox = new Rect(Canvas.GetLeft(x)+5, Canvas.GetTop(x), x.Width-5, x.Height);                    
+                    if (rexHitBox.IntersectsWith(obstacleHitBox))
+                    {
+                        EndGame();
+                    }
+
+                    //se estiver fora da tela, fique invisível
+                    if (Canvas.GetLeft(x) < -150)
+                    {
+                        x.Visibility = Visibility.Hidden;
+                        Canvas.SetLeft(x, 700);
+                        SpawnGrid();
+                    }
                 }
 
-                //se estiver fora da tela, fique invisível
-                if(Canvas.GetLeft(x) < -150)
-                {
-                    x.Visibility = Visibility.Hidden;
-                    Canvas.SetLeft(x, 700);
-                    SpawnGrid();
-                }
+                
             }
         }
 
@@ -107,11 +116,13 @@ namespace T_RexRunning
                 jumping = true;           
             }
 
+            //Restart Game
             if (e.Key == Key.R && gameOver == true)
             {
                 StartGame();
             }
 
+            //troca de imagem
             if(e.Key == Key.Down && isGround == true)
             {
                 SwapDinoToLowered();
@@ -124,6 +135,7 @@ namespace T_RexRunning
             {
                 jumping = false;
             }
+            //troca de imagem
             if (e.Key == Key.Down)
             {
                 SwapDinoToUppered();
@@ -136,44 +148,49 @@ namespace T_RexRunning
             jumping = false;
             isGround = true;
             isLowered = false;
-            force = 6;
+            speedObstacle = 7;
+            force = 15;
+            lbGameOver.Visibility = Visibility.Hidden;
 
-            Canvas.SetTop(Rex, 268);
+            Canvas.SetTop(Rex, 288);
+            SwapDinoToUppered();
             rexHitBox = new Rect(Canvas.GetLeft(Rex), Canvas.GetTop(Rex), Rex.Width, Rex.Height - 3);
             MyCanvas.Focus();
 
             //Adicionando todos os gridsna lista
-            foreach(var x in MyCanvas.Children)
+            foreach(var x in MyCanvas.Children.OfType<Image>())
             {                
-                if(x is Grid)
+                if(x is Image && x.Name.Contains("gdObstacle"))
                 {
-                    listGrid.Add((Grid)x);
+                    listImage.Add((Image)x);
                 }
             }  
             
             //colocar todos grid em invisível
-            foreach(var y in listGrid)
+            foreach(var y in listImage)
             {
                 y.Visibility = Visibility.Hidden;
                 Canvas.SetLeft(y, 800);
             }
 
             //Spawn de obstáculo para começar a lógica
-            listGrid[0] .Visibility = Visibility.Visible;
-            Canvas.SetLeft(listGrid[0], -100);
+            listImage[0].Visibility = Visibility.Visible;
+            Canvas.SetLeft(listImage[0], -100);
 
             gameTimer.Start();
         }
 
         private void EndGame()
         {
+            lbGameOver.Visibility = Visibility.Visible;
+            gameOver = true;
             gameTimer.Stop();
         }
 
         private void SpawnGrid()
         {
             int cont = 0;
-            foreach(var x in listGrid)
+            foreach(var x in listImage)
             {
                 if(x.Visibility == Visibility.Visible)
                 {
@@ -183,9 +200,9 @@ namespace T_RexRunning
             if(cont == 0)
             {
                 Random rnd = new Random();
-                int index = rnd.Next(0, listGrid.Count);
+                int index = rnd.Next(0, listImage.Count);
                 
-                listGrid[index].Visibility = Visibility.Visible;
+                listImage[index].Visibility = Visibility.Visible;
             }            
         }
 
